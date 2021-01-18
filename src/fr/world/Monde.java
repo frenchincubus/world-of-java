@@ -40,7 +40,7 @@ public class Monde {
 	
 	/**
 	* Créer un monstre avec tous ses attributs. 
-	* Demande a l'utilisateur d'entrer le nom du monstre.
+	* Le nom du monstre est randomisé.
 	* retour: une instance de la classe Monstre correctement instancié.
 	**/
 	public static Monstre MonstreFactory() {
@@ -59,9 +59,9 @@ public class Monde {
 		while(personnage.pointDeVie > 0 && monstre.pointDeVie > 0) {
 			turn = new Random().nextBoolean();
 			if(turn) {
-				personnage.pointDeVie -= monstre.degats;
+				personnage.attaquer(monstre);
 			} else {
-				monstre.pointDeVie -= personnage.degats;
+				monstre.attaquer(personnage);
 			}
 			afficherInformations(personnage);
 			afficherInformations(monstre);
