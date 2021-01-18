@@ -39,6 +39,5 @@ public class Personnage extends AbstractCombattant {
         // Appeler la methode Defence de l'adversaire en passant en Params.
         // Afficher un message pour notifier de l'attaque
    	 adversaire.defendre(this.classe.getAttaque().lancerAttaque(this, adversaire));
-   	 System.out.println(this.nom + " a attaqué " + adversaire.getNom() + " et lui a infligé " + this.degats + " dégats.");
     }
 }

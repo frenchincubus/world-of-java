@@ -1,16 +1,15 @@
 package fr.world;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
 import fr.classe.Classe;
+import fr.classe.Guerrier;
+import fr.classe.Mage;
+import fr.classe.Voleur;
 import fr.personnage.AbstractCombattant;
-import fr.personnage.BasicAttaque;
-import fr.personnage.IAttaque;
 import fr.personnage.Monstre;
 import fr.personnage.Personnage;
 
@@ -29,22 +28,18 @@ public class Monde {
 		// Demander a l'utilisateur un nom de personnage
 	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'être choisi par l'utilisateur)
 	    // Retourner l'instance du personnage
+		dictionnaire.put("guerrier", new Guerrier());
+		dictionnaire.put("mage", new Mage());
+		dictionnaire.put("voleur", new Voleur());
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Veuillez entrer le nom de votre personnage: ");
 		String nom = sc.nextLine();		
 		
-		System.out.println("Choisissez votre classe de combattant (choix libre)");
+		System.out.println("Choisissez votre classe de combattant (guerrier, mage, voleur)");
 		String classe = sc.nextLine();
 		sc.close();
 		
-		List<IAttaque> listeAttaques = new ArrayList<>();
-		BasicAttaque epee = new BasicAttaque("épée", "un coup d'épée dans l'eau", 8, 60.0);
-		BasicAttaque leviosa = new BasicAttaque("lévitation", "fait léviter l'ennemi pour le faire retomber lourdement. Ochaco Granger de My Poudlard Academia serait fière de vos prouesses !", 12, 35.0);
-		
-		listeAttaques.add(epee);
-		listeAttaques.add(leviosa);
-		
-		Classe classePersonnage = new Classe(classe, listeAttaques);
+		Classe classePersonnage = getClasse(classe);
 		
 		return new Personnage(50, 15, nom, classePersonnage);
 	}
