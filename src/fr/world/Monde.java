@@ -1,6 +1,8 @@
 package fr.world;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
@@ -18,6 +20,7 @@ public class Monde {
 	public static String[] debutNom = new String[] {"chat", "chien", "écureuil", "cobra", "péon", "putois", "loup", "chihuahua", "lapin"};
 	public static String[] finNom = new String[] {"méchant", "de feu", "de la mort", "qui tue", "relou", "ninja", "guerrier", "kawaï"};
 	public static Map<String, Classe> dictionnaire = new HashMap<>();
+	public static List<Monstre> listeMonstres = new ArrayList<>();
 
 	/**
 	* Créer un personnage avec tous ses attributs. 
@@ -100,5 +103,14 @@ public class Monde {
 	 */
 	public static Classe getClasse(String nom) {
 		return dictionnaire.get(nom);
+	}
+	
+	/**
+	 * Crée une liste de 30 monstres 
+	 */
+	public static void initialiseListeMonstres() {
+		for (int i=0; i<=30; i++) {
+			listeMonstres.add(monstreFactory());
+		}
 	}
 }
