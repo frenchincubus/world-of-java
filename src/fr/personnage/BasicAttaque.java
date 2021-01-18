@@ -27,7 +27,8 @@ public class BasicAttaque implements IAttaque {
 		int random = Monde.randomFunction(100);
 		int degatsRetournes = 0;
 		if(random < this.chanceToucher) {
-			degatsRetournes = lanceur.getDegats();
+			degatsRetournes = this.degats;
+			System.out.println("L'attaque " + this.nom + " a fait mouche et assène " + this.degats + " !!");
 		} else {
 			System.out.println("L'attaque " + this.nom + " a échoué !!");
 		}

@@ -63,7 +63,7 @@ public class Monde {
 	public static Monstre monstreFactory() {
 		String nom = debutNom[randomFunction(debutNom.length)] + " " + finNom[randomFunction(finNom.length)];		
 		
-		return new Monstre(50, 15, nom);
+		return new Monstre(50, 10, nom);
 	}
 	
 	/**
