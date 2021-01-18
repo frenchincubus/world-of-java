@@ -1,7 +1,9 @@
 package fr.world;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,6 +18,7 @@ public class Monde {
 	
 	public static String[] debutNom = new String[] {"chat", "chien", "écureuil", "cobra", "péon", "putois", "loup", "chihuahua", "lapin"};
 	public static String[] finNom = new String[] {"méchant", "de feu", "de la mort", "qui tue", "relou", "ninja", "guerrier", "kawaï"};
+	public static Map<String, Classe> dictionnaire = new HashMap<>();
 
 	/**
 	* Créer un personnage avec tous ses attributs. 
@@ -86,7 +89,21 @@ public class Monde {
 		System.out.println("vainqueur: " + (personnage.pointDeVie > 0 ? personnage : monstre));
 	}
 	
+	/**
+	 * Retourne un int random en fonction d'une borne maximale
+	 * @param int borneMax : le maximal de l'interval a randomiser
+	 * @return int le résultat
+	 */
 	public static int randomFunction(int borneMax) {
 		return new Random().nextInt(borneMax);
+	}
+	
+	/**
+	 * Retourne la classe associée du dictionnaire
+	 * @param String nom : nom de la classe à retourner 
+	 * @return la classe ou null si pas de résultat
+	 */
+	public static Classe getClasse(String nom) {
+		return dictionnaire.get(nom);
 	}
 }
