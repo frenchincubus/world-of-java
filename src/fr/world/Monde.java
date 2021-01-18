@@ -2,6 +2,7 @@ package fr.world;
 
 import java.util.Scanner;
 
+import fr.personnage.Monstre;
 import fr.personnage.Personnage;
 
 public class Monde {
@@ -28,5 +29,16 @@ public class Monde {
 	public static void afficherInformations(Personnage p) {
 		
 		System.out.println(p);
+	}
+	
+	/**
+	* Créer un monstre avec tous ses attributs. 
+	* Demande a l'utilisateur d'entrer le nom du monstre.
+	* retour: une instance de la classe Monstre correctement instancié.
+	**/
+	public static Monstre MonstreFactory() {
+		String nom = "Monstre aux plantes";		
+		
+		return new Monstre(50, 15, nom);
 	}
 }
