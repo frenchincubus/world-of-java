@@ -1,37 +1,32 @@
 package fr.personnage;
 
-public class Monstre extends Personnage {
+public class Monstre extends AbstractCombattant {
 	
 	public Monstre(int pointDeVie, int degat, String nom) {
-		super(pointDeVie, degat, nom);
+		super(nom, degat, pointDeVie);
 	}
 	
 	public int getPointDeVie() {
-		return super.getPointDeVie();
+		return pointDeVie;
 	}
 
 	public void setPointDeVie(int pointDeVie) {
-		super.setPointDeVie(pointDeVie);
+		this.pointDeVie = pointDeVie;
 	}
 
 	public int getDegat() {
-		return super.getDegat();
+		return degats;
 	}
 
 	public void setDegat(int degat) {
-		super.setDegat(degat);
+		this.degats = degat;
 	}
 
 	public String getNom() {
-		return super.getNom();
+		return nom;
 	}
 
 	public void setNom(String nom) {
-		super.setNom(nom);
-	}
-
-	@Override
-	public String toString() {
-		return super.toString();
+		this.nom = nom;
 	}
 }
