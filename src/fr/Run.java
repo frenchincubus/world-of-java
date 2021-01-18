@@ -10,7 +10,7 @@ public class Run {
 		
 		System.out.println("Bonjour aventurier, bienvenue. 1ère étape, il faut créer ton personnage! ");
 		Personnage p1 = Monde.personnageFactory();
-		Monstre m1 = Monde.MonstreFactory();
+		Monstre m1 = Monde.monstreFactory();
 		
 		Monde.afficherInformations(p1);
 		System.out.println(m1);

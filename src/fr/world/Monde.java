@@ -43,8 +43,8 @@ public class Monde {
 	* Le nom du monstre est randomisé.
 	* retour: une instance de la classe Monstre correctement instancié.
 	**/
-	public static Monstre MonstreFactory() {
-		String nom = debutNom[new Random().nextInt(debutNom.length)] + " " + finNom[new Random().nextInt(finNom.length)];		
+	public static Monstre monstreFactory() {
+		String nom = debutNom[randomFunction(debutNom.length)] + " " + finNom[randomFunction(finNom.length)];		
 		
 		return new Monstre(50, 15, nom);
 	}
@@ -67,5 +67,9 @@ public class Monde {
 			afficherInformations(monstre);
 		}
 		System.out.println("vainqueur: " + (personnage.pointDeVie > 0 ? personnage : monstre));
+	}
+	
+	public static int randomFunction(int borneMax) {
+		return new Random().nextInt(borneMax);
 	}
 }
