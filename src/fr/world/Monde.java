@@ -48,5 +48,12 @@ public class Monde {
 		return new Monstre(50, 15, nom);
 	}
 	
-	
+	/**
+	 * Lance un combat entre un personnage et un monstre
+	 * @param Personnage personnage : un personnage
+	 * @param Monstre monstre : un monstre
+	 */
+	public static void combat(Personnage personnage, Monstre monstre) {
+		
+	}
 }
