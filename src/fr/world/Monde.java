@@ -5,9 +5,11 @@ import java.util.Scanner;
 import fr.personnage.Personnage;
 
 public class Monde {
+	
+	static Personnage p1;
 
 	/**
-	* Créer un personnage avec touss ses attributs. 
+	* Créer un personnage avec tous ses attributs. 
 	* Demande a l'utilisateur d'entrer le nom du personnage.
 	* retour: une instance de la classe Personnage correctement instancié.
 	**/
@@ -21,5 +23,10 @@ public class Monde {
 		sc.close();
 		
 		return new Personnage(50, 15, nom);
+	}
+	
+	public static void afficherInformations(Personnage p) {
+		
+		System.out.println(p);
 	}
 }
