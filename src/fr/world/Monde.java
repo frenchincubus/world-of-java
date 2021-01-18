@@ -1,9 +1,14 @@
 package fr.world;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import fr.classe.Classe;
 import fr.personnage.AbstractCombattant;
+import fr.personnage.BasicAttaque;
+import fr.personnage.IAttaque;
 import fr.personnage.Monstre;
 import fr.personnage.Personnage;
 
@@ -24,9 +29,21 @@ public class Monde {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Veuillez entrer le nom de votre personnage: ");
 		String nom = sc.nextLine();		
+		
+		System.out.println("Choisissez votre classe de combattant (choix libre)");
+		String classe = sc.nextLine();
 		sc.close();
 		
-		return new Personnage(50, 15, nom);
+		List<IAttaque> listeAttaques = new ArrayList<>();
+		BasicAttaque epee = new BasicAttaque("épée", "un coup d'épée dans l'eau", 8, 60.0);
+		BasicAttaque leviosa = new BasicAttaque("lévitation", "fait léviter l'ennemi pour le faire retomber lourdement. Ochaco Granger de My Poudlard Academia serait fière de vos prouesses !", 12, 35.0);
+		
+		listeAttaques.add(epee);
+		listeAttaques.add(leviosa);
+		
+		Classe classePersonnage = new Classe(classe, listeAttaques);
+		
+		return new Personnage(50, 15, nom, classePersonnage);
 	}
 	
 	/**
