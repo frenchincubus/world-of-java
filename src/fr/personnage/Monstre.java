@@ -3,7 +3,7 @@ package fr.personnage;
 public class Monstre extends AbstractCombattant {
 	
 	public Monstre(int pointDeVie, int degat, String nom) {
-		super(nom, degat, pointDeVie);
+		super(nom, pointDeVie, degat);
 	}
 	
 	public int getPointDeVie() {

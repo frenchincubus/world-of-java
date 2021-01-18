@@ -13,7 +13,7 @@ public class Personnage extends AbstractCombattant {
 	 * @param String nom : le nom du personnage
 	 */
 	public Personnage(int pointDeVie, int degat, String nom) {
-		super(nom, degat, pointDeVie);
+		super(nom, pointDeVie, degat);
 	}
 
 	public int getPointDeVie() {

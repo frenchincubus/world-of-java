@@ -14,6 +14,8 @@ public class Run {
 		
 		Monde.afficherInformations(p1);
 		System.out.println(m1);
+		
+		Monde.combat(p1, m1);
 	}
 
 	
