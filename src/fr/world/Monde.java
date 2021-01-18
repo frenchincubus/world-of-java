@@ -3,6 +3,7 @@ package fr.world;
 import java.util.Random;
 import java.util.Scanner;
 
+import fr.personnage.AbstractCombattant;
 import fr.personnage.Monstre;
 import fr.personnage.Personnage;
 
@@ -32,7 +33,7 @@ public class Monde {
 	 * Affiche les informations du monde
 	 * @param p
 	 */
-	public static void afficherInformations(Personnage p) {
+	public static void afficherInformations(AbstractCombattant p) {
 		
 		System.out.println(p);
 	}
@@ -54,6 +55,17 @@ public class Monde {
 	 * @param Monstre monstre : un monstre
 	 */
 	public static void combat(Personnage personnage, Monstre monstre) {
-		
+		boolean turn;
+		while(personnage.pointDeVie > 0 && monstre.pointDeVie > 0) {
+			turn = new Random().nextBoolean();
+			if(turn) {
+				personnage.pointDeVie -= monstre.degats;
+			} else {
+				monstre.pointDeVie -= personnage.degats;
+			}
+			afficherInformations(personnage);
+			afficherInformations(monstre);
+		}
+		System.out.println("vainqueur: " + (personnage.pointDeVie > 0 ? personnage : monstre));
 	}
 }
