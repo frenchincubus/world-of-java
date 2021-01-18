@@ -46,7 +46,7 @@ public class Personnage {
 
 	@Override
 	public String toString() {
-		return "Personnage [pointDeVie=" + pointDeVie + ", degat=" + degat + ", nom=" + nom + "]";
+		return "nom: " + nom +", pointDeVie: " + pointDeVie + ", attaque: " + degat;
 	}
 	
 	
