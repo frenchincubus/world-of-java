@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.personnage.IAttaque;
+import fr.world.Monde;
 
 public class Classe {
 	
@@ -36,5 +37,7 @@ public class Classe {
 		return "Classe [nom=" + nom + ", attaques=" + attaques + "]";
 	}
 	
-	
+	public IAttaque getAttaque() {
+		return this.attaques.get(Monde.randomFunction(this.attaques.size()));
+	}
 }
