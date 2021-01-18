@@ -1,11 +1,10 @@
 package fr.personnage;
 
-public class Personnage {
-	private int pointDeVie;
-	private int degat;
-	private String nom;
+public class Personnage extends AbstractCombattant {
 	
-	public Personnage() {}
+	public Personnage() {
+		super();
+	}
 	
 	/**
 	 * Instancie un nouveau personnage
@@ -14,10 +13,7 @@ public class Personnage {
 	 * @param String nom : le nom du personnage
 	 */
 	public Personnage(int pointDeVie, int degat, String nom) {
-		super();
-		this.pointDeVie = pointDeVie;
-		this.degat = degat;
-		this.nom = nom;
+		super(nom, degat, pointDeVie);
 	}
 
 	public int getPointDeVie() {
@@ -29,11 +25,11 @@ public class Personnage {
 	}
 
 	public int getDegat() {
-		return degat;
+		return degats;
 	}
 
 	public void setDegat(int degat) {
-		this.degat = degat;
+		this.degats = degat;
 	}
 
 	public String getNom() {
@@ -42,11 +38,6 @@ public class Personnage {
 
 	public void setNom(String nom) {
 		this.nom = nom;
-	}
-
-	@Override
-	public String toString() {
-		return "nom: " + nom +", pointDeVie: " + pointDeVie + ", attaque: " + degat;
 	}
 	
 	
