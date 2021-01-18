@@ -1,5 +1,6 @@
 package fr.world;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import fr.personnage.Monstre;
@@ -7,7 +8,8 @@ import fr.personnage.Personnage;
 
 public class Monde {
 	
-	static Personnage p1;
+	public static String[] debutNom = new String[] {"chat", "chien", "écureuil", "cobra", "péon", "putois", "loup", "chihuahua", "lapin"};
+	public static String[] finNom = new String[] {"méchant", "de feu", "de la mort", "qui tue", "relou", "ninja", "guerrier", "kawaï"};
 
 	/**
 	* Créer un personnage avec tous ses attributs. 
@@ -26,6 +28,10 @@ public class Monde {
 		return new Personnage(50, 15, nom);
 	}
 	
+	/**
+	 * Affiche les informations du monde
+	 * @param p
+	 */
 	public static void afficherInformations(Personnage p) {
 		
 		System.out.println(p);
@@ -37,8 +43,10 @@ public class Monde {
 	* retour: une instance de la classe Monstre correctement instancié.
 	**/
 	public static Monstre MonstreFactory() {
-		String nom = "Monstre aux plantes";		
+		String nom = debutNom[new Random().nextInt(debutNom.length)] + " " + finNom[new Random().nextInt(finNom.length)];		
 		
 		return new Monstre(50, 15, nom);
 	}
+	
+	
 }
