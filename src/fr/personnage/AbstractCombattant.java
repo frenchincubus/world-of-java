@@ -15,7 +15,7 @@ public abstract class AbstractCombattant implements ICombattant {
 
      public String toString()
      {
-         return "nom: " + nom + ", pdv: " + pointDeVie + ", degats: " + degats;
+         return "nom: " + nom + ", pdv: " + pointDeVie + ", degats: " + degats + "\n";
      }
      
      public void attaquer(ICombattant adversaire)

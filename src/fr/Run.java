@@ -23,7 +23,8 @@ public class Run {
 //		System.out.println(heros);
 //		Monde.genese();
 //		Monde.combatGroupe();
-		Monde.combatSolo();
+//		Monde.combatSolo();
+		Monde.informations();
 	}
 
 	

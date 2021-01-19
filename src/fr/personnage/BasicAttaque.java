@@ -59,4 +59,11 @@ public class BasicAttaque implements IAttaque {
 		this.chanceToucher = chanceToucher;
 	}
 
+	@Override
+	public String toString() {
+		return nom + ", " + description + " [degats=" + degats + ", chanceToucher=" + chanceToucher + "]\n";
+	}
+	
+	
+
 }

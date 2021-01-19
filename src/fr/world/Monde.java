@@ -33,9 +33,7 @@ public class Monde {
 		// Demander a l'utilisateur un nom de personnage
 	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'être choisi par l'utilisateur)
 	    // Retourner l'instance du personnage
-		dictionnaire.put("guerrier", new Guerrier());
-		dictionnaire.put("mage", new Mage());
-		dictionnaire.put("voleur", new Voleur());
+		getDictionnaire();
 //		Scanner sc = new Scanner(System.in);
 		System.out.println("Veuillez entrer le nom de votre personnage: ");
 		String nom = sc.nextLine();		
@@ -114,6 +112,31 @@ public class Monde {
 		for (int i=0; i<=30; i++) {
 			listeMonstres.add(monstreFactory());
 		}
+		
+	}
+	
+	/**
+	 * Retourne la liste de monstres
+	 * @return
+	 */
+	public static List<Monstre> getListeMonstres() {
+		if (listeMonstres.isEmpty()) {
+			initialiseListeMonstres();
+		}
+		return listeMonstres;
+	}
+	
+	/**
+	 * Retourne la liste de classes
+	 * @return
+	 */
+	public static Map<String, Classe> getDictionnaire() {
+		if (dictionnaire.isEmpty()) {
+			dictionnaire.put("guerrier", new Guerrier());
+			dictionnaire.put("mage", new Mage());
+			dictionnaire.put("voleur", new Voleur());
+		}
+		return dictionnaire;
 	}
 	
 	/**
@@ -122,9 +145,7 @@ public class Monde {
 	 * @return Groupe un groupe de monstres
 	 */
 	public static Groupe creationGroupeMonstre(int nombreMonstres) {
-		if (listeMonstres.isEmpty()) {
-			initialiseListeMonstres();
-		}
+		initialiseListeMonstres();
 		
 		Groupe groupeMonstres = new Groupe();
 		for(int i=0; i<nombreMonstres; i++) {
@@ -213,5 +234,13 @@ public class Monde {
 		System.out.println("Vainqueur: " + (groupeMonstres.estMort() ? p.getNom() : "groupe de monstres"));
 	}
 	
-	
+	/**
+	 * affiche les informations : 
+	 * 	- des monstres de la liste
+	 *  - des classes disponibles 
+	 */
+	public static void informations() {
+		System.out.println(getListeMonstres());
+		System.out.println(getDictionnaire());
+	}
 }

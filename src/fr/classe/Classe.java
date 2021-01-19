@@ -34,7 +34,7 @@ public class Classe {
 
 	@Override
 	public String toString() {
-		return "Classe [nom=" + nom + ", attaques=" + attaques + "]";
+		return "Classe [nom=" + nom + "\n attaques=" + attaques + "] \n";
 	}
 	
 	public IAttaque getAttaque() {
