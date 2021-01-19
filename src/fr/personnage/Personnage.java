@@ -40,4 +40,11 @@ public class Personnage extends AbstractCombattant {
         // Afficher un message pour notifier de l'attaque
    	 adversaire.defendre(this.classe.getAttaque().lancerAttaque(this, adversaire));
     }
+
+	@Override
+	public String toString() {
+		return nom + ": classe=" + classe + ", pointDeVie=" + pointDeVie + "]";
+	}
+	
+	
 }

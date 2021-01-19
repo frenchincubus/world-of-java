@@ -179,9 +179,9 @@ public class Monde {
 	 * sélection du choix entre 1 et 4
 	 */
 	public static void genese() {
-		System.out.print("---***--- Bonjour ---***---\nChoisir une option:\n1: Lancer un combat 1v1\n2: Lancer un combat de groupe\n3: One vs World Hardcore Edition\n4: Informations\n5: Créer classe\n6: quitter\n---------------------------\n>>>");
+		System.out.print("---***--- Bonjour ---***---\nChoisir une option:\n1: Lancer un combat 1v1\n2: Lancer un tournoi de groupe\n3: lancer un combat de groupe\n4: One vs World Hardcore Edition\n5: Informations\n6: Créer classe\n7: quitter\n---------------------------\n>>>");
 		int choix = sc.nextInt();
-		while (choix < 1 || choix > 6) {
+		while (choix < 1 || choix > 7) {
 			System.out.println("mauvais choix, recommencez: ");
 			choix = sc.nextInt();
 			sc.nextLine();
@@ -191,18 +191,21 @@ public class Monde {
 				combat1v1();
 				break;
 			case 2:
-				combatGroupe();
+				combatTournoi();
 				break;
 			case 3:
-				combatSolo();
+				combatGroupe();
 				break;
 			case 4:
+				combatSolo();
+				break;
+			case 5:
 				informations();
 				break;
-			case 5: 
+			case 6: 
 				creationClasse();
 				break;
-			case 6:
+			case 7:
 				return;
 			default:
 				genese();
@@ -226,7 +229,7 @@ public class Monde {
 	/**
 	 * Lance un combat entre un groupe de personnages et un groupe de monstres
 	 */
-	public static void combatGroupe() {
+	public static void combatTournoi() {
 		System.out.println("Saisissez le nombre de monstres à attaquer");
 		int nbMonstres = sc.nextInt();
 		Groupe groupeMonstres = creationGroupeMonstre(nbMonstres);
@@ -247,6 +250,30 @@ public class Monde {
 		sc.nextLine();
 		genese();
 	}
+	
+	public static void combatGroupe() {
+		System.out.println("Saisissez le nombre de monstres à attaquer");
+		int nbMonstres = sc.nextInt();
+		Groupe groupeMonstres = creationGroupeMonstre(nbMonstres);
+		System.out.println("Saisissez le nombre de héros");
+		int nbPersos = sc.nextInt();
+		sc.nextLine();
+		Groupe groupePersos = creationGroupePersonnage(nbPersos);
+		boolean turn;
+		while(!groupeMonstres.estMort() && !groupePersos.estMort()) {
+			turn = new Random().nextBoolean();
+			if (turn) {
+				groupePersos.attaquerGroupe(groupeMonstres);
+			} else {
+				groupeMonstres.attaquerGroupe(groupePersos);
+			}
+		}
+		System.out.println("Vainqueur: " + (groupeMonstres.estMort() ? "Groupe de Héros" : "Groupe de monstres"));
+		System.out.println(groupeMonstres + "\n" + groupePersos);
+		sc.nextLine();
+		genese();
+	}
+	
 	
 	/**
 	 * lance un combat solo contre un groupe de monstre

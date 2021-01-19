@@ -26,6 +26,27 @@ public class Groupe extends AbstractCombattant {
 		ICombattant combattant = listeCombattants.get(Monde.randomFunction(listeCombattants.size()));
 		return combattant;
 	}
+	
+	public void attaquerGroupe(Groupe groupeEnnemi)
+    {
+		ICombattant adversaire = groupeEnnemi.defendre();
+		ICombattant combattant = this.attaquer();
+		if(combattant instanceof Personnage) {
+			combattant = (Personnage)combattant;
+		} else {
+			combattant = (Monstre)combattant;
+		}
+		if(combattant.estVivant() && adversaire.estVivant()) {
+			combattant.attaquer(adversaire);
+			System.out.println(combattant + ", " + adversaire);
+		}
+    }
+
+    public void defendreGroupe(int degats)
+    {
+        // Soustraire aux points de vie les degats passé en params
+   	 	this.pointDeVie -= degats;
+    }
 
 	
 	/**
