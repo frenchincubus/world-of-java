@@ -22,6 +22,7 @@ public class Monde {
 	public static String[] finNom = new String[] {"méchant", "de feu", "de la mort", "qui tue", "relou", "ninja", "guerrier", "kawaï"};
 	public static Map<String, Classe> dictionnaire = new HashMap<>();
 	public static List<Monstre> listeMonstres = new ArrayList<>();
+	public static Scanner sc = new Scanner(System.in);
 
 	/**
 	* Créer un personnage avec tous ses attributs. 
@@ -35,13 +36,13 @@ public class Monde {
 		dictionnaire.put("guerrier", new Guerrier());
 		dictionnaire.put("mage", new Mage());
 		dictionnaire.put("voleur", new Voleur());
-		Scanner sc = new Scanner(System.in);
+//		Scanner sc = new Scanner(System.in);
 		System.out.println("Veuillez entrer le nom de votre personnage: ");
 		String nom = sc.nextLine();		
 		
 		System.out.println("Choisissez votre classe de combattant (guerrier, mage, voleur)");
 		String classe = sc.nextLine();
-		sc.close();
+//		sc.close();
 		
 		Classe classePersonnage = getClasse(classe);
 		
@@ -131,5 +132,21 @@ public class Monde {
 		}
 		
 		return groupeMonstres;
+	}
+	
+	/**
+	 * Crée un groupe de personnages prêts à attaquer
+	 * @param int nombrePersonnages
+	 * @return Groupe un groupe de personnages
+	 */
+	public static Groupe creationGroupePersonnage(int nombrePersonnages) {
+		
+		Groupe groupePersonnages = new Groupe();
+		for(int i=0; i<nombrePersonnages; i++) {
+			Personnage p = personnageFactory();
+			groupePersonnages.addCombattant(p);
+		}
+		
+		return groupePersonnages;
 	}
 }
