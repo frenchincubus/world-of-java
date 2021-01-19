@@ -12,7 +12,9 @@ import fr.classe.Guerrier;
 import fr.classe.Mage;
 import fr.classe.Voleur;
 import fr.personnage.AbstractCombattant;
+import fr.personnage.BasicAttaque;
 import fr.personnage.Groupe;
+import fr.personnage.IAttaque;
 import fr.personnage.Monstre;
 import fr.personnage.Personnage;
 
@@ -22,6 +24,7 @@ public class Monde {
 	public static String[] finNom = new String[] {"méchant", "de feu", "de la mort", "qui tue", "relou", "ninja", "guerrier", "kawaï"};
 	public static Map<String, Classe> dictionnaire = new HashMap<>();
 	public static List<Monstre> listeMonstres = new ArrayList<>();
+	public static List<IAttaque> listeAttaques = new ArrayList<>();
 	public static Scanner sc = new Scanner(System.in);
 
 	/**
@@ -38,7 +41,7 @@ public class Monde {
 		System.out.println("Veuillez entrer le nom de votre personnage: ");
 		String nom = sc.nextLine();		
 		
-		System.out.println("Choisissez votre classe de combattant (guerrier, mage, voleur)");
+		System.out.println("Choisissez votre classe de combattant");
 		String classe = sc.nextLine();
 //		sc.close();
 		
@@ -176,11 +179,12 @@ public class Monde {
 	 * sélection du choix entre 1 et 4
 	 */
 	public static void genese() {
-		System.out.print("---***--- Bonjour ---***---\nChoisir une option:\n1: Lancer un combat 1v1\n2: Lancer un combat de groupe\n3: One vs World Hardcore Edition\n4: Informations\n---------------------------\n>>>");
+		System.out.print("---***--- Bonjour ---***---\nChoisir une option:\n1: Lancer un combat 1v1\n2: Lancer un combat de groupe\n3: One vs World Hardcore Edition\n4: Informations\n5: Créer classe\n6: quitter\n---------------------------\n>>>");
 		int choix = sc.nextInt();
-		while (choix < 1 || choix > 4) {
+		while (choix < 1 || choix > 6) {
 			System.out.println("mauvais choix, recommencez: ");
 			choix = sc.nextInt();
+			sc.nextLine();
 		}
 		switch(choix) {
 			case 1:
@@ -195,19 +199,28 @@ public class Monde {
 			case 4:
 				informations();
 				break;
-			default:
+			case 5: 
+				creationClasse();
 				break;
-		}
+			case 6:
+				return;
+			default:
+				genese();
+				break;
+		}		
 	}
 	
 	/**
 	 * Lance un combat 1v1 
 	 */
 	public static void combat1v1() {
+		sc.nextLine();
 		Personnage p = personnageFactory();
 		Monstre m = monstreFactory();
 		
 		combat(p, m);
+		sc.nextLine();
+		genese();
 	}
 	
 	/**
@@ -231,6 +244,8 @@ public class Monde {
 			}
 		}
 		System.out.println("Vainqueur: " + (groupeMonstres.estMort() ? "Groupe de Héros" : "Groupe de monstres"));
+		sc.nextLine();
+		genese();
 	}
 	
 	/**
@@ -254,6 +269,8 @@ public class Monde {
 			}
 		}
 		System.out.println("Vainqueur: " + (groupeMonstres.estMort() ? p.getNom() : "groupe de monstres"));
+		sc.nextLine();
+		genese();
 	}
 	
 	/**
@@ -264,5 +281,78 @@ public class Monde {
 	public static void informations() {
 		System.out.println(getListeMonstres());
 		System.out.println(getDictionnaire());
+		sc.nextLine();
+		genese();
+	}
+	
+	/**
+	 * Crée une classe
+	 * @return une nouvelle classe
+	 */
+	public static void creationClasse() {
+		initialiseListeAttaque();
+		sc.nextLine();
+		System.out.println("Choisissez un nom de classe");
+		String nomClasse = sc.nextLine();
+		
+		List<IAttaque> attaquesClasse = new ArrayList<>();
+		while (attaquesClasse.size() < 4) {
+			IAttaque attaque = selectionAttaque(attaquesAleatoires());
+			attaquesClasse.add(attaque);
+		}
+		
+		dictionnaire.put(nomClasse, new Classe(nomClasse, attaquesClasse));
+		genese();
+	}
+	
+	/**
+	 * initialise la liste d'attaques
+	 */
+	public static void initialiseListeAttaque() {
+		// liste temporaire avant externalisation xml
+		if (listeAttaques.isEmpty()) {
+			listeAttaques.add(new BasicAttaque("épée", "un coup d'épée dans l'eau", 8, 60.0));
+			listeAttaques.add(new BasicAttaque("coup de boule", "coup de boule dans les naseaux !", 12, 70.0));
+			listeAttaques.add(new BasicAttaque("coup de botte", "coup de bottes en peau de troll dans les valseuses", 20, 30.0));
+			listeAttaques.add(new BasicAttaque("coup de poing", "patate de forain breeeuuuh", 20, 70.0));
+			listeAttaques.add(new BasicAttaque("bâton", "un coup de bâton sur la caboche", 6, 60.0));
+			listeAttaques.add(new BasicAttaque("boule de feu", "une boule de feu puiss... puissiez-vous réussir à la lancer !", 25, 45.0));
+			listeAttaques.add(new BasicAttaque("boule de glace", "utile l'été pour garnir un cornet, l'ogre en raffole", 20, 55.0));
+			listeAttaques.add(new BasicAttaque("boule électrique", "redresse les cheveux, gare au coup de foudre", 15, 90.0));
+			listeAttaques.add(new BasicAttaque("dague", "un coup de dague dans le flanc", 8, 80.0));
+			listeAttaques.add(new BasicAttaque("piège", "un piège pour berner l'ennemi !", 20, 60.0));
+			listeAttaques.add(new BasicAttaque("corde", "Etranglement de l'ennemi, attention, les fantômes n'ont pas de cou", 30, 30.0));
+			listeAttaques.add(new BasicAttaque("assomoir", "un coup de matraque sur la caboche !", 18, 60.0));
+			listeAttaques.add(new BasicAttaque("bouclier", "assène un coup de bouclier !", 30, 50.0));
+			listeAttaques.add(new BasicAttaque("arcane", "une attaque des ténèbres, sans lampe torche !", 25, 80.0));
+			listeAttaques.add(new BasicAttaque("vampirisme", "Le sang ennemi est impur, ne le buvez pas !", 17, 99.0));
+		}
+	}
+	
+	/**
+	 * extrait 2 attaques de la liste et le retourne dans un tableau 
+	 * @return tableau de 2 attaques
+	 */
+	public static IAttaque[] attaquesAleatoires() {
+		int rand1 = randomFunction(listeAttaques.size());
+		int rand2 = randomFunction(listeAttaques.size());
+		return new IAttaque[] {listeAttaques.get(rand1), listeAttaques.get(rand2)};
+	}
+	
+	/**
+	 * retourne une des 2 attaques sur le choix de l'utilisateur
+	 * @param tableau de deuxAttaques
+	 * @return une attaque
+	 */
+	public static IAttaque selectionAttaque(IAttaque[] deuxAttaques) {
+		System.out.println("Selectionnez une des 2 attaques");
+		System.out.println("Attaque 1: " + deuxAttaques[0].getNom() + ", " + deuxAttaques[0].getDescription());
+		System.out.println("Attaque 2: " + deuxAttaques[1].getNom() + ", " + deuxAttaques[1].getDescription());
+		int choix = sc.nextInt();
+		while (choix < 1 || choix > 2) {
+			System.out.println("mauvaise saisie, choisissez une attaque");
+			choix = sc.nextInt();			
+		}
+		return deuxAttaques[choix - 1];
 	}
 }
