@@ -5,7 +5,7 @@ import java.util.List;
 
 import fr.world.Monde;
 
-public class Groupe implements ICombattant {
+public class Groupe extends AbstractCombattant {
 	
 	private List<ICombattant> listeCombattants = new ArrayList<>();
 
@@ -13,49 +13,20 @@ public class Groupe implements ICombattant {
 	 * Choisit un combattant aléatoire et attaque l'adversaire
 	 * @param ICombattant adversaire
 	 */
-	public void attaquer(ICombattant adversaire) {
+	public ICombattant attaquer() {
 		ICombattant combattant = listeCombattants.get(Monde.randomFunction(listeCombattants.size()));
-		combattant.attaquer(adversaire);
+		return combattant;
 	}
 
 	/**
 	 * Sélectionne un combattant aléatoire de la listeCombattants pour défendre
 	 * @param int degats  
 	 */
-	public void defendre(int degats) {
+	public ICombattant defendre() {
 		ICombattant combattant = listeCombattants.get(Monde.randomFunction(listeCombattants.size()));
-		combattant.defendre(degats);
+		return combattant;
 	}
 
-	public String getNom() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public int getDegats() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public int getPointDeVie() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public void setNom(String nom) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void setDegats(int degats) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void setPointDeVie(int pointDeVie) {
-		// TODO Auto-generated method stub
-
-	}
 	
 	/**
 	 * Ajoute un combattant à la listeCombattants
@@ -72,7 +43,7 @@ public class Groupe implements ICombattant {
 	public boolean estMort() {
 		boolean mort = true;
 		for (ICombattant combattant : listeCombattants) {
-			if (combattant.getPointDeVie() > 0) {
+			if (combattant.estVivant()) {
 				mort = false;
 			}
 		}

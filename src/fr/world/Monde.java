@@ -66,7 +66,7 @@ public class Monde {
 	public static Monstre monstreFactory() {
 		String nom = debutNom[randomFunction(debutNom.length)] + " " + finNom[randomFunction(finNom.length)];		
 		
-		return new Monstre(50, 10, nom);
+		return new Monstre(40, 8, nom);
 	}
 	
 	/**
@@ -165,5 +165,28 @@ public class Monde {
 		Monstre m = monstreFactory();
 		
 		combat(p, m);
+	}
+	
+	/**
+	 * Lance un combat entre un groupe de personnages et un groupe de monstres
+	 */
+	public static void combatGroupe() {
+		System.out.println("Saisissez le nombre de monstres à attaquer");
+		int nbMonstres = sc.nextInt();
+		Groupe groupeMonstres = creationGroupeMonstre(nbMonstres);
+		System.out.println("Saisissez le nombre de héros");
+		int nbPersos = sc.nextInt();
+		sc.nextLine();
+		Groupe groupePersos = creationGroupePersonnage(nbPersos);
+		
+		while(!groupeMonstres.estMort() && !groupePersos.estMort()) {
+			Personnage p = (Personnage) groupePersos.attaquer();
+			Monstre m = (Monstre) groupeMonstres.attaquer();
+			if (p.estVivant() && m.estVivant()) {
+				System.out.println("\n" + p.getNom() + " vs " + m.getNom() + "\n");
+				combat(p, m);
+			}
+		}
+		System.out.println("Vainqueur: " + (groupeMonstres.estMort() ? "Groupe de Héros" : "Groupe de monstres"));
 	}
 }

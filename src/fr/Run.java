@@ -21,7 +21,8 @@ public class Run {
 //		Groupe heros = Monde.creationGroupePersonnage(5);
 //		System.out.println(monstres);
 //		System.out.println(heros);
-		Monde.genese();
+//		Monde.genese();
+		Monde.combatGroupe();
 	}
 
 	

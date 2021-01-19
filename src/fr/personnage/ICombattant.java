@@ -20,4 +20,10 @@ public interface ICombattant {
     public void setNom(String nom);
     public void setDegats(int degats);
     public void setPointDeVie(int pointDeVie);
+    
+    /**
+ 	 * retourne si le combattant est en vie ou non
+ 	 * @return boolean en vie ou non 
+ 	 */
+ 	public boolean estVivant();
 }

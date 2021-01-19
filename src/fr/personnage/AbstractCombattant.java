@@ -55,4 +55,8 @@ public abstract class AbstractCombattant implements ICombattant {
  	public void setNom(String nom) {
  		this.nom = nom;
  	}
+ 	
+ 	public boolean estVivant() {
+ 		return this.pointDeVie > 0;
+ 	}
 }
