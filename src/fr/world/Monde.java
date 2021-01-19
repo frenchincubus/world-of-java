@@ -12,6 +12,7 @@ import fr.classe.Guerrier;
 import fr.classe.Mage;
 import fr.classe.Voleur;
 import fr.personnage.AbstractCombattant;
+import fr.personnage.Groupe;
 import fr.personnage.Monstre;
 import fr.personnage.Personnage;
 
@@ -112,5 +113,23 @@ public class Monde {
 		for (int i=0; i<=30; i++) {
 			listeMonstres.add(monstreFactory());
 		}
+	}
+	
+	/**
+	 * Crée un groupe de monstres prêts à attaquer parmi la liste de monstres
+	 * @param int nombreMonstres
+	 * @return Groupe un groupe de monstres
+	 */
+	public static Groupe creationGroupeMonstre(int nombreMonstres) {
+		if (listeMonstres.isEmpty()) {
+			initialiseListeMonstres();
+		}
+		
+		Groupe groupeMonstres = new Groupe();
+		for(int i=0; i<nombreMonstres; i++) {
+			groupeMonstres.addCombattant(listeMonstres.get(randomFunction(listeMonstres.size())));
+		}
+		
+		return groupeMonstres;
 	}
 }
