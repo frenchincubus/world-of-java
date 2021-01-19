@@ -150,7 +150,20 @@ public class Monde {
 		return groupePersonnages;
 	}
 	
+	/**
+	 * Menu de démarrage
+	 */
 	public static void genese() {
 		System.out.print("---***--- Bonjour ---***---\nChoisir une option:\n1: Lancer un combat 1v1\n2: Lancer un combat de groupe\n3: One vs World Hardcore Edition\n4: Informations\n---------------------------\n>>>");
+	}
+	
+	/**
+	 * Lance un combat 1v1 
+	 */
+	public static void combat1v1() {
+		Personnage p = personnageFactory();
+		Monstre m = monstreFactory();
+		
+		combat(p, m);
 	}
 }
