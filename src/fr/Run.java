@@ -22,7 +22,8 @@ public class Run {
 //		System.out.println(monstres);
 //		System.out.println(heros);
 //		Monde.genese();
-		Monde.combatGroupe();
+//		Monde.combatGroupe();
+		Monde.combatSolo();
 	}
 
 	

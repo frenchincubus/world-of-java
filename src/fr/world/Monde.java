@@ -189,4 +189,29 @@ public class Monde {
 		}
 		System.out.println("Vainqueur: " + (groupeMonstres.estMort() ? "Groupe de Héros" : "Groupe de monstres"));
 	}
+	
+	/**
+	 * lance un combat solo contre un groupe de monstre
+	 */
+	public static void combatSolo() {
+		System.out.println("Saisissez le nombre de monstres à attaquer");
+		int nbMonstres = sc.nextInt();
+		Groupe groupeMonstres = creationGroupeMonstre(nbMonstres);
+		sc.nextLine();
+		Personnage p = personnageFactory();
+		int vieTotale = p.getPointDeVie() + 30*nbMonstres;
+		System.out.println("la bataille sera rude, la déesse du combat vous octroie un bonus, vos PV sont de " + vieTotale);
+		p.setPointDeVie(vieTotale);
+		
+		while(p.estVivant() && !groupeMonstres.estMort()) {
+			Monstre m = (Monstre) groupeMonstres.attaquer();
+			if(m.estVivant()) {
+				System.out.println("\n" + p.getNom() + " vs " + m.getNom() + "\n");
+				combat(p, m);
+			}
+		}
+		System.out.println("Vainqueur: " + (groupeMonstres.estMort() ? p.getNom() : "groupe de monstres"));
+	}
+	
+	
 }
