@@ -173,9 +173,31 @@ public class Monde {
 	
 	/**
 	 * Menu de démarrage
+	 * sélection du choix entre 1 et 4
 	 */
 	public static void genese() {
 		System.out.print("---***--- Bonjour ---***---\nChoisir une option:\n1: Lancer un combat 1v1\n2: Lancer un combat de groupe\n3: One vs World Hardcore Edition\n4: Informations\n---------------------------\n>>>");
+		int choix = sc.nextInt();
+		while (choix < 1 || choix > 4) {
+			System.out.println("mauvais choix, recommencez: ");
+			choix = sc.nextInt();
+		}
+		switch(choix) {
+			case 1:
+				combat1v1();
+				break;
+			case 2:
+				combatGroupe();
+				break;
+			case 3:
+				combatSolo();
+				break;
+			case 4:
+				informations();
+				break;
+			default:
+				break;
+		}
 	}
 	
 	/**
