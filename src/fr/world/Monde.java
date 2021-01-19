@@ -149,4 +149,8 @@ public class Monde {
 		
 		return groupePersonnages;
 	}
+	
+	public static void genese() {
+		System.out.print("---***--- Bonjour ---***---\nChoisir une option:\n1: Lancer un combat 1v1\n2: Lancer un combat de groupe\n3: One vs World Hardcore Edition\n4: Informations\n---------------------------\n>>>");
+	}
 }

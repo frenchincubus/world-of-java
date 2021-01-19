@@ -17,10 +17,11 @@ public class Run {
 //		System.out.println(m1);
 		
 //		Monde.combat(p1, m1);
-		Groupe monstres = Monde.creationGroupeMonstre(10);
-		Groupe heros = Monde.creationGroupePersonnage(5);
-		System.out.println(monstres);
-		System.out.println(heros);
+//		Groupe monstres = Monde.creationGroupeMonstre(10);
+//		Groupe heros = Monde.creationGroupePersonnage(5);
+//		System.out.println(monstres);
+//		System.out.println(heros);
+		Monde.genese();
 	}
 
 	
