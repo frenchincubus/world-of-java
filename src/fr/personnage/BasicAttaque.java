@@ -23,6 +23,10 @@ public class BasicAttaque implements IAttaque {
 	       this.description = description;
 	   }
 
+	/**
+	 * Lance l'attaque et retourne les dégats associés à l'attaque
+	 * @return int degats
+	 */
 	public int lancerAttaque(ICombattant lanceur, ICombattant cible) {
 		int random = Monde.randomFunction(100);
 		int degatsRetournes = 0;

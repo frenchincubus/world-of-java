@@ -33,29 +33,23 @@ public class Monde {
 	* retour: une instance de la classe Personnage correctement instancié.
 	**/
 	public static Personnage personnageFactory() {
-		// Demander a l'utilisateur un nom de personnage
-	    // Creer un nouveau personnage en utilisant le constructeur avec tous ses params (dont le nom qui vient d'être choisi par l'utilisateur)
-	    // Retourner l'instance du personnage
 		getDictionnaire();
-//		Scanner sc = new Scanner(System.in);
 		System.out.println("Veuillez entrer le nom de votre personnage: ");
 		String nom = sc.nextLine();		
 		
 		System.out.println("Choisissez votre classe de combattant");
 		String classe = sc.nextLine();
-//		sc.close();
 		
 		Classe classePersonnage = getClasse(classe);
 		
-		return new Personnage(50, 15, nom, classePersonnage);
+		return new Personnage(50, nom, classePersonnage);
 	}
 	
 	/**
 	 * Affiche les informations du monde
 	 * @param p
 	 */
-	public static void afficherInformations(AbstractCombattant p) {
-		
+	public static void afficherInformations(AbstractCombattant p) {		
 		System.out.println(p);
 	}
 	
@@ -131,7 +125,7 @@ public class Monde {
 	
 	/**
 	 * Retourne la liste de classes
-	 * @return
+	 * @return le dictionnaire de classes
 	 */
 	public static Map<String, Classe> getDictionnaire() {
 		if (dictionnaire.isEmpty()) {
@@ -251,6 +245,9 @@ public class Monde {
 		genese();
 	}
 	
+	/**
+	 * lance un combat de mélée entre 1 groupe de personnages et un groupe de monstres
+	 */
 	public static void combatGroupe() {
 		System.out.println("Saisissez le nombre de monstres à attaquer");
 		int nbMonstres = sc.nextInt();

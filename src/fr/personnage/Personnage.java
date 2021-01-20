@@ -17,8 +17,8 @@ public class Personnage extends AbstractCombattant {
 	 * @param String nom : le nom du personnage
 	 * @param Classe classe: la classe du personnage
 	 */
-	public Personnage(int pointDeVie, int degat, String nom, Classe classe) {
-		super(nom, pointDeVie, degat);
+	public Personnage(int pointDeVie, String nom, Classe classe) {
+		super(nom, pointDeVie, 0);
 		this.classe = classe;
 	}
 

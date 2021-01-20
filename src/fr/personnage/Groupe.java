@@ -27,6 +27,10 @@ public class Groupe extends AbstractCombattant {
 		return combattant;
 	}
 	
+	/**
+	 * Lance une attaque entre un membre d'un groupe contre le membre de l'autre groupe
+	 * @param groupeEnnemi
+	 */
 	public void attaquerGroupe(Groupe groupeEnnemi)
     {
 		ICombattant adversaire = groupeEnnemi.defendre();
@@ -41,13 +45,6 @@ public class Groupe extends AbstractCombattant {
 			System.out.println(combattant + ", " + adversaire);
 		}
     }
-
-    public void defendreGroupe(int degats)
-    {
-        // Soustraire aux points de vie les degats passé en params
-   	 	this.pointDeVie -= degats;
-    }
-
 	
 	/**
 	 * Ajoute un combattant à la listeCombattants

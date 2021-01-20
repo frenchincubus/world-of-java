@@ -7,6 +7,12 @@ public abstract class AbstractCombattant implements ICombattant {
 
      public AbstractCombattant() {}
      
+     /**
+      * Constructeur de AbstractCombattant
+      * @param nom
+      * @param pointDeVie
+      * @param degat
+      */
      public AbstractCombattant(String nom, int pointDeVie, int degat){
          this.nom = nom;
          this.pointDeVie = pointDeVie;
