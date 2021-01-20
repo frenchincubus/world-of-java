@@ -63,6 +63,16 @@ public class BasicAttaque implements IAttaque {
 	public String toString() {
 		return nom + ", " + description + " [degats=" + degats + ", chanceToucher=" + chanceToucher + "]\n";
 	}
+
+	public String getDefinition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String information() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

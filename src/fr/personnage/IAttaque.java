@@ -1,6 +1,8 @@
 package fr.personnage;
 
-public interface IAttaque {
+import fr.classe.Sort;
+
+public interface IAttaque extends Sort {
 
 	/**
 	 * lance une attaque en fonction de la chance de toucher
